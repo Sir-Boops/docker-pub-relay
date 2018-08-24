@@ -37,10 +37,10 @@ RUN apt update && \
 	apt install tzdata && \
 	dpkg-reconfigure --frontend noninteractive tzdata && \
 	apt dist-upgrade -y && \
-	apt install libssl1.0 libevent-2.1
+	apt install libssl1.0 libevent-2.1 ca-certificates
 
 # Copy over the relay software
-COPY --from=build-deps /root/pub-relay /opt/pub-relay
+COPY --from=build-deps /root/pub-relay/bin /opt/pub-relay/bin
 
 # Add relay to path
 ENV PATH="${PATH}:/opt/pub-relay/bin"
