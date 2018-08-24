@@ -12,7 +12,7 @@ RUN	apk -U upgrade && \
 	shards build && \
 	mkdir -p /opt/pub-relay && \
 	mv bin /opt/pub-relay/ && \
-	apk add gmp pcre gc libevent libgcc && \
+	apk add gmp pcre gc libevent libgcc ca-certificates && \
 	apk del --purge deps && \
 	rm -rf ~/*
 
