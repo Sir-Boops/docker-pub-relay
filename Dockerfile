@@ -46,3 +46,7 @@ COPY --from=build-deps /opt/pub-relay /opt/pub-relay
 
 # Add relay to path
 ENV PATH="${PATH}:/opt/pub-relay/bin"
+
+# Add Extra ENVs
+ENV RELAY_HOST="0.0.0.0"
+ENV REDIS_URL="redis://redis:6379"
