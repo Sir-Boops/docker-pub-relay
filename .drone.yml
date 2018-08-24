@@ -1,0 +1,8 @@
+pipeline:
+    docker:
+        image: plugins/docker
+        dockerfile: Dockerfile
+        repo: sirboops/pub-relay
+        experimental: true
+        squash: true
+        secrets: [ docker_username, docker_password ]
