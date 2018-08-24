@@ -25,9 +25,7 @@ RUN apt -y install git gcc libpcre3-dev libevent-dev \
 	git clone https://source.joinmastodon.org/mastodon/pub-relay && \
 	cd pub-relay && \
 	git checkout $RELAY_HASH && \
-	shards build --production && \
-	mkdir -p /opt/pub-relay && \
-	mv bin/ /opt/pub-relay/
+	shards build --production
 
 # Add relay to path
 ENV PATH="${PATH}:/opt/pub-relay/bin"
@@ -42,7 +40,7 @@ RUN apt update && \
 	apt install libssl1.0 libevent-2.1
 
 # Copy over the relay software
-COPY --from=build-deps /opt/pub-relay /opt/pub-relay
+COPY --from=build-deps /root/pub-relay /opt/pub-relay
 
 # Add relay to path
 ENV PATH="${PATH}:/opt/pub-relay/bin"
