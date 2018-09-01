@@ -1,7 +1,7 @@
 FROM alpine:3.8
 
 # Build the pub-relay
-ENV PUB_HASH="2894b8fb7088e22e28ad539ee0bfd15f6418098f"
+ENV PUB_HASH="a8891a43d7ca95fb7bdcae348b39e20c6acce74b"
 RUN	apk -U upgrade && \
 	apk add --virtual deps crystal \
 		shards libressl-dev musl-dev zlib-dev && \
@@ -14,7 +14,8 @@ RUN	apk -U upgrade && \
 	mv bin /opt/pub-relay/ && \
 	apk add gmp pcre gc libevent libgcc ca-certificates && \
 	apk del --purge deps && \
-	rm -rf ~/*
+	rm -rf ~/* && \
+	cp /opt/pub-relay/bin/worker /
 
 ENV PATH="${PATH}:/opt/pub-relay/bin"
 
