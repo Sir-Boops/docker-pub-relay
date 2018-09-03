@@ -14,8 +14,7 @@ RUN	apk -U upgrade && \
 	mv bin /opt/pub-relay/ && \
 	apk add gmp pcre gc libevent libgcc ca-certificates && \
 	apk del --purge deps && \
-	rm -rf ~/* && \
-	cp /opt/pub-relay/bin/worker /
+	rm -rf ~/*
 
 ENV PATH="${PATH}:/opt/pub-relay/bin"
 
