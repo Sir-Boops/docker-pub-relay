@@ -16,14 +16,14 @@ RUN apt update && \
     shards build --release
 
 FROM ubuntu:18.04
-COPY --from=builder /root/pub-relay /root/pub-relay
+COPY --from=builder /root/pub-relay/bin/pub-relay /root
 RUN apt update && \
     apt dist-upgrade && \
     apt auto-remove && \
-    apt install libssl1.0 libevent-2.1-6 ca-certificates
+    apt -y install libssl1.0 libevent-2.1-6 ca-certificates
 
 # Add Extra ENVs
 ENV RELAY_DEBUG="true"
 
 # Start the relay
-CMD /root/pub-relay/bin/pub-relay
+CMD /root/pub-relay
