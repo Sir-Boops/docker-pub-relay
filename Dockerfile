@@ -20,7 +20,7 @@ COPY --from=builder /root/pub-relay /root/pub-relay
 RUN apt update && \
     apt dist-upgrade && \
     apt auto-remove && \
-    apt install libssl1.0 libevent-2.1-6
+    apt install libssl1.0 libevent-2.1-6 ca-certificates
 
 # Add Extra ENVs
 ENV RELAY_DEBUG="true"
