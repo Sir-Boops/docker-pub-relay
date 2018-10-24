@@ -13,6 +13,7 @@ RUN apt update && \
     cd ~ && \
     git clone https://source.joinmastodon.org/mastodon/pub-relay.git && \
     cd pub-relay && \
+	git checkout $PUB_HASH && \
     shards build --release
 
 FROM ubuntu:18.04
