@@ -3,8 +3,8 @@ FROM ubuntu:18.04 as builder
 # Build the pub-relay
 ENV PUB_HASH="f2c8968e547facdc356068c3b59388664c676c55"
 RUN apt update && \
-    apt dist-upgrade && \
-    apt autoremove && \
+    apt dist-upgrade -y && \
+    apt autoremove -y && \
     apt install gnupg curl -y && \
     curl -sL "https://keybase.io/crystal/pgp_keys.asc" | apt-key add - && \
     echo "deb https://dist.crystal-lang.org/apt crystal main" > /etc/apt/sources.list.d/crystal.list && \
@@ -19,8 +19,8 @@ RUN apt update && \
 FROM ubuntu:18.04
 COPY --from=builder /root/pub-relay/bin/pub-relay /root
 RUN apt update && \
-    apt dist-upgrade && \
-    apt auto-remove && \
+    apt dist-upgrade -y && \
+    apt auto-remove -y && \
     apt -y install libssl1.0 libevent-2.1-6 ca-certificates
 
 # Add Extra ENVs
