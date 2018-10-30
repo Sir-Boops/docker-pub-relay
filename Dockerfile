@@ -1,7 +1,7 @@
 FROM ubuntu:18.04 as builder
 
 # Build the pub-relay
-ENV PUB_HASH="f2c8968e547facdc356068c3b59388664c676c55"
+ENV PUB_HASH="7cd94fd784687adf92e9cbd0e9c69c6aba6a3e11"
 RUN apt update && \
     apt dist-upgrade -y && \
     apt autoremove -y && \
